@@ -74,29 +74,42 @@ $token = $_SESSION['csrfToken'];
     <div class="form-group">
         <label for="your_name">氏名</label>
         <input type="text" class="form-control" id="your_name" name="your_name" value="<?php if (!empty($_POST['your_name'])) { echo h($_POST['your_name']);} ?>" required>
-
     </div>
-</div>
-</div>
+
+<br>
+
+<div class="form-group">
+    <label for="email">メールアドレス</label>
+    <input type="email" class="form-control" id="email" name="email" value="<?php if (!empty($_POST['your_name'])) {echo h($_POST['email']);} ?>" required>
 </div>
 <br>
 
-メールアドレス
-<input type="email" name="email" value="<?php if (!empty($_POST['your_name'])) {echo h($_POST['email']);} ?>">
-<br>
-
-ホームページ
-<input type="url" name="url" value="<?php if(!empty($_POST['url'])){echo h($_POST['url']); }  ?>">
+<div class="form-group">
+    <label for="url">ホームページ</label>
+    <input type="url" class="form-control" id="url" name="url" value="<?php if(!empty($_POST['url'])){echo h($_POST['url']); }  ?>">
+</div>
 <br>
 
 性別
-<input type="radio" name="gender" value="0" <?php if( isset($_POST['gender']) && $_POST['gender'] === '0'): ?> checked <?php endif ;?>>男性
-<input type="radio" name="gender" value="1" <?php if( isset($_POST['gender']) && $_POST['gender'] === '1'): ?> checked <?php endif ;?>>女性
-<input type="radio" name="gender" value="2" <?php if( isset($_POST['gender']) && $_POST['gender'] === '2'): ?> checked <?php endif ;?>>その他
+<div class="form-check form-check-inline">
+    <input type="radio" class="form-check-input" id="gender1" name="gender" value="0" <?php if( isset($_POST['gender']) && $_POST['gender'] === '0'): ?> checked <?php endif ;?>>
+    <label class="form-check-label" for="gender1">男性</label>
+</div>
+<div class="form-check form-check-inline">
+    <input type="radio" class="form-check-input" id="gender2" name="gender" value="1" <?php if( isset($_POST['gender']) && $_POST['gender'] === '1'): ?> checked <?php endif ;?>>
+    <label class="form-check-label" for="gender2">女性</label>
+</div>
+<div class="form-check form-check-inline">
+    <input type="radio" class="form-check-input" id="gender3" name="gender" value="2" <?php if( isset($_POST['gender']) && $_POST['gender'] === '2'): ?> checked <?php endif ;?>>
+    <label class="form-check-label" for="gender3">その他</label>
+</div>
+
+<br>
 <br>
 
-年齢
-<select name="age" >
+<div class="form-group">
+<label for="age">年齢</label>
+<select class="form-control" id="age" name="age" >
     <option value="">選択してください</option>
     <option value="1" <?php if( isset($_POST['age']) && $_POST['age'] === '1'): ?> selected <?php endif ;?>>〜19歳</option>
     <option value="2" <?php if( isset($_POST['age']) && $_POST['age'] === '2'): ?> selected <?php endif ;?>>20〜29歳</option>
@@ -104,21 +117,32 @@ $token = $_SESSION['csrfToken'];
     <option value="4" <?php if( isset($_POST['age']) && $_POST['age'] === '4'): ?> selected <?php endif ;?>>40〜49歳</option>
     <option value="5" <?php if( isset($_POST['age']) && $_POST['age'] === '5'): ?> selected <?php endif ;?>>50〜59歳</option>
     <option value="6" <?php if( isset($_POST['age']) && $_POST['age'] === '6'): ?> selected <?php endif ;?>>60〜歳</option>
-
 </select>
-<br>
-お問い合わせ内容
-<textarea name="contact" rows="5"><?php if(!empty($_POST['contact'])){echo h($_POST['contact']); }  ?></textarea>
+</div>
+
 <br>
 
-注意事項のチェック
-<input type="checkbox" name="caution" value="1">確認しました。
+<div class="form-group">
+    <label for="contact">お問い合わせ内容</label>
+    <textarea class="form-control" id="contact" name="contact" rows="5"><?php if(!empty($_POST['contact'])){echo h($_POST['contact']); }  ?></textarea>
+</div>
+
 <br>
 
-<input type="submit" name="btn_confirm" value="確認する">
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" id="caution" name="caution" value="1">
+    <label class="form-check-label" for="caution">注意事項を確認しました。</label>
+</div>
+<br>
+
+<input class="btn btn-info" type="submit" name="btn_confirm" value="確認する">
 <input type="hidden" name="csrf" value="<?php echo h($token); ?>">
 
 </form>
+
+</div><!-- .col-md6 -->
+</div>
+</div>
 <?php endif; ?>
 
 <!-- 1 -->
